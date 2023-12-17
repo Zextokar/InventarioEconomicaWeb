@@ -1,0 +1,52 @@
+{% extends 'dashboard.html' %} 
+{% block titulo %} La Económica | Dashboard {% endblock %}
+
+
+{% block h1_titulo %}
+<div class="container-fluid">
+  <div class="row justify-content-center align-items-center">
+    <div class="col-12 text-center">
+      <h1 class="display-4 bg-light p-3 rounded-pill shadow-sm">Panel Administrativo</h1>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block contenido %}
+
+<div class="container mt-5">
+  <div class="row">
+    <!-- Recuadro 1 -->
+    <div class="col-md-4">
+      <div class="card">
+        <img src="https://www.4webs.es/blog/wp-content/uploads/2016/10/usuarios-nuevos-vs-recurrentes.jpg" class="card-img-top" alt="Imagen 1">
+        <div class="card-body">
+          <h5 class="card-title">Usuarios</h5>
+          <a class="btn btn-primary mt-3" href="{% url 'usergestion' %}">Ir a la sección</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recuadro 2 -->
+    <div class="col-md-4">
+      <div class="card">
+        <img src="https://farmaciaschilespa.cl/wp-content/uploads/2023/07/maxresdefault.jpg" class="card-img-top" alt="Imagen 2">
+        <div class="card-body">
+          <h5 class="card-title">Productos</h5>
+          <a class="btn btn-primary mt-3" href="{% url 'productos' %}">Ir a la sección</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recuadro 3 -->
+    <div class="col-md-4">
+      <div class="card">
+        <img src="https://www.portalveterinaria.com/upload/20230302100640empleoveterinariofebrero.jpg" class="card-img-top" alt="Imagen 3">
+        <div class="card-body">
+          <h5 class="card-title">Categorias</h5>
+          <a class="btn btn-primary mt-3" href="{% url 'categorias' %}">Ir a la sección</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

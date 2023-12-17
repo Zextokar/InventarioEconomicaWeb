@@ -1,0 +1,57 @@
+<div class="sidebar" data-color="orange">
+  <div class="logo d-flex justify-content-center">
+    <div class="simple-text text-center">La Económica</div>
+  </div>  
+  <div class="sidebar-wrapper" id="sidebar-wrapper">
+    <ul class="nav">
+      <li class="active ">
+        <a href="{% url 'dashboard' %}">
+          <i class="now-ui-icons design_app"></i>
+          <p>Panel de Control</p>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="now-ui-icons business_money-coins"></i>
+          <p>Seción Ventas</p>
+        </a>
+      </li>
+      <li>
+        <a href="{% url 'usergestion' %}">
+          <i class="now-ui-icons business_badge"></i>
+          <p>Gestión Usuarios</p>
+        </a>
+      </li>
+      <li>
+        <a href="{% url 'productos' %}">
+          <i class="now-ui-icons shopping_basket"></i>
+          <p>Productos</p>
+        </a>
+      </li>
+      <li>
+        <a href="{% url 'categorias' %}">
+          <i class="now-ui-icons shopping_box"></i>
+          <p>Categorias</p>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="now-ui-icons files_paper"></i>
+          <p>Historial de Movimientos</p>
+        </a>
+      </li>
+      <li>
+        <a href="{% url 'home' %}">
+          <i class="now-ui-icons business_globe"></i>
+          <p>Web Principal</p>
+        </a>
+      </li>
+      <li class="active-pro">
+        <a href="{% url 'logout' %}">
+          <i class="now-ui-icons education_atom"></i>
+          <p>Cerrar Sesión</p>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

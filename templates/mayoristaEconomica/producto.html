@@ -1,0 +1,104 @@
+{% extends 'all_pages.html' %} 
+{% block titulo %} La Económica | Productos {% endblock %}
+
+{% block h1_titulo %}
+<div class="container-fluid">
+  <div class="row justify-content-center align-items-center">
+    <div class="col-12 text-center">
+      <h1 class="display-4 bg-light p-3 rounded-pill shadow-sm">Lista de Productos</h1>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block contenido %}
+{% block message %}
+{% if messages %}
+<hr>
+    {% for message in messages %}
+        <div class="alert {{ message.tags }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endfor %}
+{% endif %}
+{% endblock %}
+<hr>
+
+{% if productos %}
+  <table class="table table-striped nowrap" style="width: 100%;" id="miTabla">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Código</th>
+        <th>Nombre</th>
+        <th>Descripción</th>
+        <th>Precio</th>
+        <th>Cantidad</th>
+        <th>Categoría</th>
+        <th>Encargado</th>
+        <th>Acción</th>
+      </tr>    
+    </thead>
+    <tbody>
+      {% for producto in productos %}
+        {% if user.is_superuser or producto.user == user %}
+          <tr>
+            <td>{{ producto.id }}</td>
+            <td>{{ producto.codigo }}</td>
+            <td>{{ producto.nombre }}</td>
+            <td>{{ producto.descripcion }}</td>
+            <td>{{ producto.precio }}</td>
+            <td>{{ producto.cantidad }}</td>
+            <td>{{ producto.categoria.nombre }}</td>
+            <td>{{ producto.user.username }}</td>
+            <td>
+              <a href="/editProducto/{{ producto.id }}" class="btn btn-success">
+                <i class="bi bi-pencil-square"></i>
+              </a>
+              {% if user.is_superuser %}
+                <a href="#" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                  <i class="bi bi-trash"></i>
+                </a>
+              {% endif %}
+            </td>
+          </tr>
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModal">Eliminación de Productos</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  ¿Estás seguro de que deseas eliminar este producto?
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                  <a href="/deleteProducto/{{ producto.id }}" class="btn btn-danger">Aceptar</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </tbody>
+  </table>
+{% else %}
+  <div class="container-fluid">
+    <div class="row justify-content-center align-items-center centrar-contenedor">
+      <div class="col-12 text-center">
+        <div class="alert alert-danger" role="alert">
+          <strong>¡Atención!</strong> No hay productos en la Base de Datos.
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+{% endif %}
+
+{% endblock %}
+
+{% block insert %}
+<a class="btn btn-primary mt-3" href="{% url 'insertProducts' %}">Agregar Productos</a>
+{% endblock %}
