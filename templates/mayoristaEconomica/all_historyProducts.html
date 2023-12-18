@@ -1,0 +1,48 @@
+{% extends 'historialMovimientos.html' %} 
+{% block titulo %} La Económica | Historial Productos {% endblock %}
+
+
+{% block h1_titulo %}
+<div class="container-fluid">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-12 text-center">
+            <h1 class="display-4 bg-light p-3 rounded-pill shadow-sm fs-1 fs-sm-3">Movimientos Productos</h1>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block contenido %}
+<table class="table table-striped nowrap" style="width: 100%;" id="miTabla">
+    <thead>
+        <tr>
+            <th>Usuario</th>
+            <th>Tipo de Movimiento</th>
+            <th>Código</th>
+            <th>Nombre</th>
+            <th>Categoría</th>
+            <th>Fecha</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for cambio in historial_cambios %}
+            <tr>
+                <td>{{ cambio.user.username }}</td>
+                <td>
+                    {% if cambio.history_type == '+' %}
+                        Añadir
+                    {% elif cambio.history_type == '~' %}
+                        Modificar
+                    {% elif cambio.history_type == '-' %}
+                        Eliminar
+                    {% endif %}
+                </td>
+                <td>{{ cambio.codigo }}</td>
+                <td>{{ cambio.nombre }}</td>
+                <td>{{ cambio.categoria }}</td>
+                <td>{{ cambio.history_date }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

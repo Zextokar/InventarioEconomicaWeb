@@ -1,0 +1,49 @@
+{% extends 'historialMovimientos.html' %} 
+{% block titulo %} La Económica | Historial {% endblock %}
+
+
+{% block h1_titulo %}
+<div class="container-fluid">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-12 text-center">
+            <h1 class="display-4 bg-light p-3 rounded-pill shadow-sm fs-1 fs-sm-3">Movimientos</h1>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block contenido %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-sm-6 col-md-6">
+            <div class="card" style="width: 18rem;">
+                <figure>
+                    <img src="https://i0.wp.com/get.witei.com/wp-content/uploads/2022/04/cartera-de-productos-ejemplos.jpg" class="card-img-top img-fluid rounded p-2 border border-dark" alt="..." style="height: 200px;">
+                    <figcaption class="card-img">
+                        <div class="text-center">
+                            <h5 class="card-title text-black mt-2">Productos</h5>
+                            <a href="{% url 'historyMediaProductos' %}" class="btn btn-primary">Ir al Historial</a>
+                        </div>
+                    </figcaption>
+                </figure>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-6">
+            <div class="card" style="width: 18rem;">
+                <figure>
+                    <img src="https://www.ecommercenews.pe/wp-content/uploads/2017/07/tienda-online.png" class="card-img-top img-fluid rounded p-2 border border-dark" alt="..." style="height: 200px;">
+                    <figcaption class="card-img">
+                        <div class="text-center">
+                            <h5 class="card-title text-black mt-2">Categorias</h5>
+                            <a href="{% url 'historyMediaCategorias' %}" class="btn btn-primary">Ir al Historial</a>
+                        </div>
+                    </figcaption>
+                </figure>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

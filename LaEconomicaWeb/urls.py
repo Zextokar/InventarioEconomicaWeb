@@ -37,4 +37,7 @@ urlpatterns = [
     path('insertUser/', InsertUser, name='insertUser'),
     path('editUser/<int:id>', editUser, name='editUser'),
     path('deleteUser/<int:id>', deleteUser, name='deleteUser'),
+    path('historial/', historyMedia, name='historyMedia'),
+    path('historialProducts/', historyMediaProductos, name='historyMediaProductos'),
+    path('historialCategories/', historyMediaCategorias, name='historyMediaCategorias'),
 ]

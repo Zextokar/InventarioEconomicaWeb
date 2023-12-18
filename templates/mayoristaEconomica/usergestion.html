@@ -5,7 +5,7 @@
 <div class="container-fluid">
   <div class="row justify-content-center align-items-center">
     <div class="col-12 text-center">
-      <h1 class="display-4 bg-light p-3 rounded-pill shadow-sm">Lista de Usuarios</h1>
+      <h1 class="display-4 bg-light p-3 rounded-pill shadow-sm fs-1 fs-sm-3">Lista de Usuarios</h1>
     </div>
   </div>
 </div>
@@ -18,7 +18,6 @@
   <table id="miTabla" class="table table-striped nowrap" style="width:100%">
     <thead>
       <tr>
-        <th>ID</th>
         <th>Usuario</th>
         <th>Administrador</th>
         <th>Staff</th>
@@ -29,10 +28,21 @@
       {% for producto in productos %}
         {% if user.is_superuser or producto.user == user %}
           <tr>
-            <td>{{ producto.id }}</td>
             <td>{{ producto.username }}</td>
-            <td>{{ producto.is_superuser }}</td>
-            <td>{{ producto.is_staff }}</td>
+            <td>
+              {% if producto.is_superuser %}
+                  Sí
+              {% else %}
+                  No
+              {% endif %}
+            </td>
+            <td>
+              {% if producto.is_staff %}
+                  Sí
+              {% else %}
+                  No
+              {% endif %}
+            </td>          
             <td>
               <a href="/editUser/{{ producto.id }}" class="btn btn-success">
                 <i class="bi bi-pencil-square"></i>

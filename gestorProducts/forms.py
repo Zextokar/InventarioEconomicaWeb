@@ -97,11 +97,10 @@ class CategoriaFormRegistration(forms.ModelForm):
         ]
     )
     
-
     codigo.widget.attrs['class'] = 'form-control'
     nombre.widget.attrs['class'] = 'form-control'
     descripcion.widget.attrs['class'] = 'form-control'
 
     class Meta:
         model = Categorias
-        fields = '__all__'
+        exclude = ['user']

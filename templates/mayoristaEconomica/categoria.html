@@ -4,9 +4,9 @@
 {% block h1_titulo %}
 <div class="container-fluid">
   <div class="row justify-content-center align-items-center">
-    <div class="col-12 text-center">
-      <h1 class="display-4 bg-light p-3 rounded-pill shadow-sm">Lista de Categorias</h1>
-    </div>
+      <div class="col-12 text-center">
+          <h1 class="display-4 bg-light p-3 rounded-pill shadow-sm fs-1 fs-sm-3">Lista de Categorias</h1>
+      </div>
   </div>
 </div>
 {% endblock %}
@@ -16,7 +16,6 @@
 <table id="miTabla" class="table table-striped nowrap" style="width:100%">
   <thead>
     <tr>
-      <th>ID</th>
       <th>Código</th>
       <th>Nombre</th>
       <th>Acción</th>
@@ -25,7 +24,6 @@
   <tbody>
     {% for producto in productos %}
     <tr>
-      <td>{{ producto.id }}</td>
       <td>{{ producto.codigo }}</td>
       <td>{{ producto.nombre }}</td>
       <td>

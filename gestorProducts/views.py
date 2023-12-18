@@ -125,3 +125,23 @@ def eliminarCategoria(request, id):
         return HttpResponseRedirect(reverse('categorias'))
     else:
         return render(request, 'mayoristaEconomica/dashboard.html')
+    
+@login_required 
+def historyMedia(request):
+    return render(request, 'mayoristaEconomica/historialMovimientos.html')
+
+@login_required 
+def historyMediaProductos(request):
+    historial_cambios = Producto.history.all()
+    data = {
+        'historial_cambios': historial_cambios
+    }
+    return render(request, 'mayoristaEconomica/all_historyProducts.html', data)
+
+@login_required 
+def historyMediaCategorias(request):
+    historial_cambios = Categorias.history.all()
+    data = {
+        'historial_cambios': historial_cambios
+    }
+    return render(request, 'mayoristaEconomica/all_historyCategorias.html', data)
