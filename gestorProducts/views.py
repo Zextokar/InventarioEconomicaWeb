@@ -128,20 +128,29 @@ def eliminarCategoria(request, id):
     
 @login_required 
 def historyMedia(request):
-    return render(request, 'mayoristaEconomica/historialMovimientos.html')
+    if request.user.is_superuser:
+        return render(request, 'mayoristaEconomica/historialMovimientos.html')
+    else:
+        return render(request, 'mayoristaEconomica/dashboard.html')
 
 @login_required 
 def historyMediaProductos(request):
-    historial_cambios = Producto.history.all()
-    data = {
-        'historial_cambios': historial_cambios
-    }
-    return render(request, 'mayoristaEconomica/all_historyProducts.html', data)
+    if request.user.is_superuser:
+        historial_cambios = Producto.history.all()
+        data = {
+            'historial_cambios': historial_cambios
+        }
+        return render(request, 'mayoristaEconomica/all_historyProducts.html', data)
+    else:
+        return render(request, 'mayoristaEconomica/dashboard.html')
 
 @login_required 
 def historyMediaCategorias(request):
-    historial_cambios = Categorias.history.all()
-    data = {
-        'historial_cambios': historial_cambios
-    }
-    return render(request, 'mayoristaEconomica/all_historyCategorias.html', data)
+    if request.user.is_superuser:
+        historial_cambios = Categorias.history.all()
+        data = {
+            'historial_cambios': historial_cambios
+        }
+        return render(request, 'mayoristaEconomica/all_historyCategorias.html', data)
+    else:
+        return render(request, 'mayoristaEconomica/dashboard.html')
