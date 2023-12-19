@@ -65,3 +65,7 @@ def deleteUser(request, id):
         return HttpResponseRedirect(reverse('usergestion'))
     else:
         return render(request, 'mayoristaEconomica/dashboard.html')
+    
+@login_required
+def SectionVentas(request):
+    return render(request, 'mayoristaEconomica/sectionVentas.html')

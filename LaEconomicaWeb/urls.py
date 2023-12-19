@@ -40,4 +40,5 @@ urlpatterns = [
     path('historial/', historyMedia, name='historyMedia'),
     path('historialProducts/', historyMediaProductos, name='historyMediaProductos'),
     path('historialCategories/', historyMediaCategorias, name='historyMediaCategorias'),
+    path('SectionVentas/', SectionVentas, name='SectionVentas'),
 ]
