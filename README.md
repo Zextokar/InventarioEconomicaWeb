@@ -7,7 +7,7 @@ Bienvenido al repositorio del Sistema de Inventario para la microempresa "La Eco
 | Usuarios    | Cargo                         |
 |-----------|-------------------------------|
 | Zextokar    |  Gerente y Desarrollador de SW  |
-| BenaMT  |  Gerente y Desarrollador de SW  |
+| BenjaMT  |  Gerente y Desarrollador de SW  |
 
 
 ## Requerimientos del Sistema
