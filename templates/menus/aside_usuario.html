@@ -1,7 +1,7 @@
 <div class="sidebar" data-color="orange">
   <div class="logo d-flex justify-content-center">
     <div class="simple-text text-center">La Económica</div>
-  </div> 
+  </div>  
   <div class="sidebar-wrapper" id="sidebar-wrapper">
     <ul class="nav">
       <li class="active ">
@@ -11,9 +11,21 @@
         </a>
       </li>
       <li>
+        <a href="{% url 'SectionVentas' %}">
+          <i class="now-ui-icons business_money-coins"></i>
+          <p>Sección Ventas</p>
+        </a>
+      </li>
+      <li>
         <a href="{% url 'productos' %}">
           <i class="now-ui-icons shopping_basket"></i>
           <p>Productos</p>
+        </a>
+      </li>
+      <li>
+        <a href="{% url 'categorias' %}">
+          <i class="now-ui-icons shopping_box"></i>
+          <p>Categorias</p>
         </a>
       </li>
       <li>

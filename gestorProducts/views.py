@@ -70,68 +70,73 @@ def eliminarProductos(request, id):
 
 @login_required
 def Categoria(request):
-    if request.user.is_superuser:
-        producto = Categorias.objects.all()
-        data = {
-            'productos' : producto,
-        }
-        return render(request, 'mayoristaEconomica/categoria.html', data)
-    else:
-        return render(request, 'mayoristaEconomica/dashboard.html')
+    producto = Categorias.objects.all()
+    data = {
+        'productos' : producto,
+    }
+    return render(request, 'mayoristaEconomica/categoria.html', data)
     
 @login_required
 def insertCategorias(request):
-    if request.method == 'POST':
-        form = CategoriaFormRegistration(request.POST)
-        if form.is_valid():
-            form = form.save(commit=False)
-            form.user = request.user
-            form.save()
-            return HttpResponseRedirect(reverse('categorias'))
+    if request.user.is_superuser:
+        if request.method == 'POST':
+            form = CategoriaFormRegistration(request.POST)
+            if form.is_valid():
+                form = form.save(commit=False)
+                form.user = request.user
+                form.save()
+                return HttpResponseRedirect(reverse('categorias'))
 
+        else:
+            form = CategoriaFormRegistration()
+
+        data = {
+            'form': form,
+            'title': 'Registrar Categoria'
+        }
+
+        return render(request, 'mayoristaEconomica/insertComponents.html', data)
     else:
-        form = CategoriaFormRegistration()
+        return render(request, 'mayoristaEconomica/dashboard.html')
 
-    data = {
-        'form': form,
-        'title': 'Registrar Categoria'
-    }
-
-    return render(request, 'mayoristaEconomica/insertComponents.html', data)
     
 @login_required
 def editarCategoria(request, id):
-    categorias = Categorias.objects.get(id=id)
-    form = CategoriaFormRegistration(instance=categorias)
-    if request.method == 'POST':
-        form = CategoriaFormRegistration(request.POST, instance=categorias)
-        if form.is_valid():
-            print("El form es valido")
-            form.save()
-            return HttpResponseRedirect(reverse('categorias'))
-        else:
-            print("Hay errores: ", form.errors)
-    data = {
-        'form': form,
-        'title': 'Editar Categoria'
-    }
-    return render(request, 'mayoristaEconomica/insertComponents.html', data)
+    if request.user.is_superuser:
+        categorias = Categorias.objects.get(id=id)
+        form = CategoriaFormRegistration(instance=categorias)
+        if request.method == 'POST':
+            form = CategoriaFormRegistration(request.POST, instance=categorias)
+            if form.is_valid():
+                print("El form es valido")
+                form.save()
+                return HttpResponseRedirect(reverse('categorias'))
+            else:
+                print("Hay errores: ", form.errors)
+        data = {
+            'form': form,
+            'title': 'Editar Categoria'
+        }
+        return render(request, 'mayoristaEconomica/insertComponents.html', data)
+    else:
+        return render(request, 'mayoristaEconomica/dashboard.html')
 
 @login_required
 def eliminarCategoria(request, id):
     if request.user.is_superuser:
-        producto = Categorias.objects.get(id = id)
-        producto.delete()
+        categoria = Categorias.objects.get(id=id)
+        categoria.delete()
         return HttpResponseRedirect(reverse('categorias'))
     else:
         return render(request, 'mayoristaEconomica/dashboard.html')
-    
-@login_required 
+
+@login_required
 def historyMedia(request):
     if request.user.is_superuser:
         return render(request, 'mayoristaEconomica/historialMovimientos.html')
     else:
         return render(request, 'mayoristaEconomica/dashboard.html')
+
 
 @login_required 
 def historyMediaProductos(request):

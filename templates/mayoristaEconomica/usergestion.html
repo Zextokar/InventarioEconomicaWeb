@@ -21,6 +21,7 @@
         <th>Usuario</th>
         <th>Administrador</th>
         <th>Staff</th>
+        <th>Última Conexión</th>
         <th>Acción</th>
       </tr>    
     </thead>
@@ -42,7 +43,8 @@
               {% else %}
                   No
               {% endif %}
-            </td>          
+            </td>
+            <td>{{ producto.last_login }}</td>          
             <td>
               <a href="/editUser/{{ producto.id }}" class="btn btn-success">
                 <i class="bi bi-pencil-square"></i>
@@ -63,7 +65,7 @@
     <div class="row justify-content-center align-items-center centrar-contenedor">
       <div class="col-12 text-center">
         <div class="alert alert-danger" role="alert">
-          <strong>¡Atención!</strong> No hay productos en la Base de Datos.
+          <strong>¡Atención!</strong> No hay usuarios en la Base de Datos.
         </div>
       </div>
     </div>
