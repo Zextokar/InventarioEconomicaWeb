@@ -42,4 +42,5 @@ urlpatterns = [
     path('historialCategories/', historyMediaCategorias, name='historyMediaCategorias'),
     path('SectionVentas/', SectionVentas, name='SectionVentas'),
     path('UserInfo/', UserInfo, name='UserInfo'),
+    path('accounts/logout/', TemplateView.as_view(template_name="home.html"), name="logout"),
 ]
