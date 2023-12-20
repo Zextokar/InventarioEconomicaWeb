@@ -77,15 +77,11 @@ Esperamos que este sistema de inventario sea de gran utilidad para "La Economica
 
 ```
 C:.
-¦   arbol.txt
 ¦   manage.py
 ¦   README.md
 ¦   requirements.txt
 ¦   UsuariosDataBase.txt
 ¦   
-+---.vscode
-¦       settings.json
-¦       
 +---gestorProducts
 ¦   ¦   admin.py
 ¦   ¦   apps.py
