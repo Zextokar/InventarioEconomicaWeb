@@ -144,4 +144,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 """ Ruta post login """
 LOGIN_REDIRECT_URL = "/dashboard"
 """ Ruta post logout """
-LOGOUT_REDIRECT_URL = "/accounts/login"
+LOGOUT_REDIRECT_URL = "/"
