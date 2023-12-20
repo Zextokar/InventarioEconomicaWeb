@@ -18,6 +18,9 @@
     <tr>
       <th>Código</th>
       <th>Nombre</th>
+      {% if user.is_superuser %}
+      <th>Acción</th>
+      {% endif %}
     </tr>
   </thead>
   <tbody>
